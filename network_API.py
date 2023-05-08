@@ -1,7 +1,10 @@
 import socket
 
 serv_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, proto=0)
-serv_sock.bind(('rfailesdev-babuin-v3-server-main-tmcg33.streamlit.app', 8080))
+hostname = socket.gethostname()
+ip_address = socket.gethostbyname(hostname)
+print("IP: "+str(ip_address))
+serv_sock.bind((ip_address, 8080))
 serv_sock.listen(10)
 
 while True:
