@@ -6,6 +6,8 @@ import LoadDataModules
 import variables
 import system
 import network_API
+import SafeAsyncio
+SafeAsyncio.get_or_create_eventloop()
 
 bot = Bot("6276352725:AAGL-klmb2pgQ9bwVUw-BlNFE-u3AcYGszc")
 db = Dispatcher(bot)
@@ -14,7 +16,7 @@ async def AutoStop(message, userid):
     AutoStopInput = system.StopInput("Auto", str(int(userid)))
     if AutoStopInput:
         await message.answer(
-            AutoStopInput)  # Auto - значит автоматически(ели ошибка, то реакции нет) - Отменяет ввод предыдущей команды(если она есть)
+            AutoStopInput)  # Auto - значит автоматически(ели ошибка, то реакции нет)   - Отменяет ввод предыдущей команды(если она есть)
 
 @db.message_handler(commands=['start'])
 async def start(message: types.Message):
